@@ -24,7 +24,7 @@ import static org.apache.commons.io.FileUtils.deleteDirectory;
  * @version 1.0
  * @since 2020-09-09
  */
-public class CorePageObjects extends PageObject implements CorePageObjectsInterface {
+public class CorePageObjects extends PageObject  {
 
     /**
      * Switches to browser's tab by number
@@ -213,12 +213,39 @@ public class CorePageObjects extends PageObject implements CorePageObjectsInterf
      * Waits for visibility of an input field web element by xpath
      * and types a text into this field
      *
+     * @param element the web element
+     * @param text  the string that is a text to type
+     * @author Sergey Ocheretko
+     */
+    public void typeTextIntoInputFieldByWebElement(WebElementFacade element, String text) {
+        waitFor(ExpectedConditions.visibilityOf(element)).typeInto(element, text);
+    }
+
+    /**
+     * Waits for visibility of an input field web element by xpath
+     * and types a text into this field
+     *
+     * @param value the string that is a path to the element
+     * @param text  the string that is a text to type
+     * @author Sergey Ocheretko
+     */
+    public void typeTextIntoInputField(By value, String text) {
+        waitFor(ExpectedConditions.visibilityOf(find(value))).typeInto(find(value), text);
+    }
+
+    /**
+     * Waits for visibility of an input field web element by xpath
+     * and types a text into this field
+     *
      * @param xpath the string that is a path to the element
      * @param text  the string that is a text to type
      * @author Sergey Ocheretko
      */
     public void typeTextIntoInputFieldByXpath(String xpath, String text) {
         waitFor(ExpectedConditions.visibilityOf(find(By.xpath(xpath)))).typeInto(find(By.xpath(xpath)), text);
+    }
+
+    public void enterInTheLoginField(String login) {
     }
 
     public class DownloadAndScrollPageObjects extends PageObject {
