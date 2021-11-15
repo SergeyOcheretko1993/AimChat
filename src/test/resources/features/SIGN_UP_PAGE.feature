@@ -36,4 +36,4 @@ Feature: SIGN UP PAGE
   Scenario: 2.007 Check appearing warning message "Username contains invalid characters" in the "Username" field.
     And Enter "ыдфвоыфловлы" in the Username field
     And Enter "test" in the 'Email' field
-    And 'Username contains invalid characters' alert is displayed
+    And Username contains invalid characters alert is displayed

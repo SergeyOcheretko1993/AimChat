@@ -80,7 +80,7 @@ Feature: AIMCHAT SIGNIN PAGE
   Scenario: 1.011 Сheck for the maximum unacceptable capacity of characters in the "Login"  field.
     Then Enter "kmwemoweowiemfowfowenfweofnweofnwoefnweownvowenownvowvnovnwoevnowenvownvovweovnooooooooooooooooooooooooooooooooooooooooooooooooooooooowvnovnovvnownvnewnvwoevnwonvwoevnwovnwoevnowenvownvowevnowvnownvowevwonvwvnwovowvnoewnoovwvnwevnwnovwvwenewvwevnwvinweovdd" in the Login field
     Then Enter "qwerty1" in the Password field
-    And 'Login should contain from '5' to '255' characters' alert is displayed
+    And 'Login should contain from '5 to 255 characters' alert is displayed
 
 
   Scenario: 1.012 Сheck for the minimum allowable capacity of characters in the "Login" field

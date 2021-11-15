@@ -1,26 +1,18 @@
 package project.ui.pageObj;
 
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
 import static org.apache.commons.io.FileUtils.deleteDirectory;
@@ -67,7 +59,7 @@ public class CorePageObjects extends PageObject implements CorePageObjectsInterf
         while (!(Objects.requireNonNull(folder.listFiles()).length == 1) && count < 300);
 
         boolean result = false;
-        if (Objects.requireNonNull(folder.listFiles()).length == 1){
+        if (Objects.requireNonNull(folder.listFiles()).length == 1) {
             result = true;
         }
         deleteDirectory(folder);
@@ -75,8 +67,7 @@ public class CorePageObjects extends PageObject implements CorePageObjectsInterf
     }
 
     /**
-
-    /**
+     * /**
      * Opens a new tab of browser
      *
      * @author Sergey Ocheretko
@@ -126,10 +117,9 @@ public class CorePageObjects extends PageObject implements CorePageObjectsInterf
 
 
     public void scrollToTheTop() {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver() ;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollTo(0, 0);");
     }
-
 
 
     /**
@@ -229,6 +219,23 @@ public class CorePageObjects extends PageObject implements CorePageObjectsInterf
      */
     public void typeTextIntoInputFieldByXpath(String xpath, String text) {
         waitFor(ExpectedConditions.visibilityOf(find(By.xpath(xpath)))).typeInto(find(By.xpath(xpath)), text);
+    }
+
+    public class DownloadAndScrollPageObjects extends PageObject {
+
+
+        /**
+         * Switches to browser's tab by number
+         *
+         * @param numberOfTab the integer value that is a number of tab
+         * @author Sergey Ocheretko
+         */
+        public void switchToTab(int numberOfTab) {
+            ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
+            getDriver().switchTo().window(tabs.get(numberOfTab - 1));
+        }
+
+
     }
 }
 
